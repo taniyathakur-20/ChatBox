@@ -14,7 +14,7 @@ function CustomInput({type,
         <div className="customInputBaseContainer">
             <div className="customInputIconContainer">
                 {
-                    Icon?<Icon color={iconColor} size={15}/>:null
+                    Icon?<Icon color={iconColor} size={20}/>:null
                 }
             </div>
             <div className="customInputInputContainer">

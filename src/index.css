@@ -1,10 +1,13 @@
 :root{
-    --baseColor:#034732;
-      --baseColorDark:#5FAD56;
-     --secondaryColor:#C1CFDA;
-      --secondSecondaryColor:#C17817;
-      --whiteColor:#ffffff;
-      --blackColor:#000000;
+    --baseColor:rgb(135,235,162);
+    --baseColorDark:#7EBF5C;
+    --secondaryColor:##C4F1BE;
+    --secondSecondaryColor:#EDAE49;
+    --whiteColor:#ffffff;
+    --blackColor:#000000;
+    --borderColor:#dadADA;
+    --slateColor: #292929;
+      
 }
 body{
   margin:0;

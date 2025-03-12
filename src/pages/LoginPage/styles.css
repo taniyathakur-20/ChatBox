@@ -1,48 +1,85 @@
-.loginPageBaseContainer {
-  width: 100%;
+.loginPageBaseContainer{
   height: 100vh;
-  padding: 20px;
-  background: linear-gradient(to right, var(--baseColor), var(--baseColorDark));
+  width: 100%;
+  background-color:var(--baseColor);
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
+
 .loginPageContentBaseContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-  background-color: var(--whiteColor);
-  box-shadow: 0px 0px 20px var(--whiteColor);
+  width: 70%;
+  height: 70%;
+  background-color: var(--slateColor);
   border-radius: 20px;
-  border: 1px solid var(--borderColor);
-}
-.loginPageContentTitleContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  font-size: larger;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-.loginPageContentTitleContainer login {
-  font-size: medium;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.loginPageContentInputContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.loginPageContentButtonContainer button {
+  justify-content: center;
+  gap: 10px;
   padding: 10px;
-  border-radius: 10px;
-  background-color: var(--whiteColor);
-  outline: none;
+}
+
+.loginPageContentImageContainer {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.loginPageContentImageContainer img {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+}
+
+.loginPageInputContainer {
+  flex: 1;
+  background-color:rgb(255, 255, 255);
+  height: 100%;
+  width:100%;
+  font-size: large;
+}
+.loginPageInputContainer h1{
+  font-size: larger;
+}
+.loginPageInputContainer h2{
+  font-size: larger;
+}
+.loginPageInputContainer img{
+  height:30px;
+  width:40px;
+}
+.loginPageInputContainer{
+  display:flex;
+  flex:1;
+  gap:10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  border-radius: 30px;
+  font-size: larger;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  
+}
+.loginPageBaseContainer{
+  height: 100vh;
+  width: 100%;
+  background-color:var(--baseColor);
   display: flex;
   align-items: center;
-  align-content: center;
-  border: 1px solid var(--blackColor);
+  justify-content: center;
+  padding: 30px;
+
 }
-.loginPageContentRegisterContainer {
+
+.loginPageInputContainer CustomButton{
+     font-size: larger;
+     padding:10px;
+     align-items: center;
+     justify-content: center;
 }

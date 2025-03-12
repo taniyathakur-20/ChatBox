@@ -1,0 +1,18 @@
+.customButtonBaseContainer{
+     font-size: medium;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+     padding:10px 20px;
+     gap:20px;
+     border-radius: 20px;
+     transition:0.5s ease-in-out;
+
+}
+.customButtonBaseContainer:hover{
+    background-color: transparent !important;
+    color:var(--whiteColor) !important;
+    gap:10px;
+    /* border:1px solid var(--whiteColor); */
+    cursor:pointer;
+}
