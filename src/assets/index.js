@@ -1,6 +1,6 @@
-const ASSETS={
-    homePageImage:require("./images/profile.png"),
-    LoginPageImage:require("./images/loginpage.png"),
-    RegisterPageImage: require("./images/whatsapp.png"),
+const assets={
+    homePageImage:require("./images/abcd (2).png"),
+    LoginPageImage:require("./images/backgroundPhoto.jpg"),
+    RegisterPageImage:require("./images/whatsapp.png"),
 };
-export default ASSETS;
+export default assets;

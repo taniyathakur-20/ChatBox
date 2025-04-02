@@ -2,6 +2,8 @@ import"./styles.css";
 import { useState } from "react";
 import{FaEyeSlash} from"react-icons/fa";
 import{FaEye} from "react-icons/fa";
+import { LuSendHorizontal } from "react-icons/lu";
+
 function CustomInput({type,
     placeholder,
     Icon,

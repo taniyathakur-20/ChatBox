@@ -1,0 +1,55 @@
+.peoplePageBaseContainer {
+    position: relative;
+    width: 100%;
+  }
+  
+  .peoplePageContentContainer {
+    height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+  }
+  .peoplePageContentTitleContainer {
+        background-color: aqua;
+  }
+  .peopleInputContainer{
+    background-color: blueviolet;
+  }
+  
+  .peoplePageContentBaseContainer {
+    flex: 1;
+    height: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .peoplePageItemBaseContainer {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px #00000033;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+  
+  .peoplePageAddButtonContainer {
+    position: absolute;
+    bottom: 4%;
+    right: 10%
+  }
+  .peoplePageItemBaseContainer{
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .PeoplePageFollowButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 90%;
+  }
+  

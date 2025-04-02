@@ -7,12 +7,21 @@
      gap:20px;
      border-radius: 20px;
      transition:0.5s ease-in-out;
-
+     display:flex;
+     justify-content: center;
+     align-items: center;
+     animation: animate 1.5s ease-in-out;
 }
-.customButtonBaseContainer:hover{
-    background-color: transparent !important;
+.customButtonBaseContainer{
     color:var(--whiteColor) !important;
     gap:10px;
-    /* border:1px solid var(--whiteColor); */
+    border:1px solid var(--whiteColor); 
+    cursor:pointer
+}
+.customButtonBaseContainer:hover{
+    background-color:var(--baseColor)!important;
+    color: var(--whiteColor) !important;
+    border:1px solid var(--whiteColor);
     cursor:pointer;
+
 }

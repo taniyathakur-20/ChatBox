@@ -1,0 +1,24 @@
+.RequetsPageBaseContainer{
+  width: 100%;
+  height: 100vh;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+
+}
+.RequetsPageContentContainer{
+  display: flex;
+  height: 10vh;
+  width: 100%;
+  background-color: rgb(218, 45, 45);
+  gap:70%
+}
+.username{
+  display: flex;
+  flex: 1;
+}
+.buttons{
+  flex: 1;
+  display: flex;
+
+}

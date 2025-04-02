@@ -1,0 +1,46 @@
+.chatPageBaseContainer{
+  width:100%;
+  height:100vh;
+  /* background-color: blueviolet; */
+  display:flex;
+  flex-direction: row;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.chatPageChatContainer{
+  flex:1;
+  background-color: aqua;
+}
+.chatPageMessageContainer{
+  flex:2.5;
+  /* background-color: blue; */
+  align-items: center;
+  justify-content: space-between;
+  padding:10px;
+
+
+}
+.chatPageUserContainer{
+  flex:1;
+  background-color: azure;
+  padding:20px 20px;
+}
+.chatPageBoxContainer{
+  flex:1;
+  background-color: brown;
+  height:70%;
+}
+.chatPageCustomBaseContainer{
+  /* background-color: pink; */
+  flex:1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+}
+.chatPageInputContainer{
+  height: 50px;
+  width: 40px;
+}
+.chatPageButtonContainer{
+  
+}

@@ -1,70 +1,14 @@
 .homePageBaseContainer{
-    background-color: var(--baseColor);
+    width:100%;
+    height:100vh;
     display:flex;
     flex-direction: column;
-    width: 100%;
-    height: 100vh;
 }
 .homePageNavbarBaseContainer{
-    background-color:#1E90FF;
-    padding:10px;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    /* height:10%; */
+    display: flex;
 }
-.homePageLogoContainer{
-    .homePageLogoContainer {
-        display: flex;
-        align-items: center; /* Vertical alignment */
-        gap: 8px; /* Space between text and icon */
-      }
- .homePageLogoContainer     .icon {
-        font-size: 40px; /* Adjust icon size */
-      }
-}
-.homePageLogoContainer .icon{
-      transition:1s ease-in-out;
-}
-.homePageLogoContainer icon:hover{
-    transform: rotate(360 deg);
-}
-
-.homePageLogoContainer h1{
-    filter:drop-shadow(0px 0px 10px var(--whiteColor));
-    size: 10px;
-}
-.homePagePagesContainer{
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-
-}
-.homePageListContainer{
+.homePageContentBaseContainer{
     flex: 1;
-}
-.homePageContentContainer{
-  background-color: blue;
-  display:flex;
-  flex:1;
-}
-.homePageSidebarContentContainer{
-    background-color: #f4f4f4;
     display:flex;
-    width: 30%;
+    flex-direction: column;
 }
-.homePageChatContentContainer{
-    background-color:#E0E0E0;
-    display:flex;
-    width: 70%;
-}
-.homePageProfileContainer img{
-    width: 50px;
-    height:40px;
-    border-radius: 30%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    justify-content: space-between;
-
-  }
