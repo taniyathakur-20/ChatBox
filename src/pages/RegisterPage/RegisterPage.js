@@ -1,16 +1,14 @@
 import { useState } from "react";
 import COLOR from "../../config/color";
-import { getAuth } from "firebase/auth";
 import CustomInput from "../../components/CustomInput/CustomInput";
+import CustomButton from "../../components/CustomButton/CustomButton";
 import "./styles.css";
 import ASSETS from "../../assets";
-import CustomButton from "../../components/CustomButton/CustomButton";
 import { FaRegUserCircle, FaKey } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { auth, database } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { BiSave } from "react-icons/bi";
 import { ref, set } from "firebase/database";
 
 function RegisterPage() {
@@ -24,39 +22,45 @@ function RegisterPage() {
   const handleRegister = async () => {
     try {
       if (
-        username == "" ||
-        email == "" ||
-        password == "" ||
-        confirmPassword == ""
+        username.trim() === "" ||
+        email.trim() === "" ||
+        password.trim() === "" ||
+        confirmPassword.trim() === ""
       ) {
-        alert("Please fill the fields");
-      } else if (password != confirmPassword) {
-        alert("Password is not matching");
-      } else {
-        setButtonText("Register");
-        const response = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-        if (response.user.uid) {
-          set(ref(database, `user/${response.user.uid}`), {
-            uid: response.user.uid,
-            name: username,
-            email: email
-          })
-          navigate("/login");
-        } else {
-          alert("Failed to register");
-          setUsername("");
-          setEmail("");
-          setPassword("");
-          setConfirmPassword("");
-        }
+        alert("Please fill out all the fields");
+        return;
       }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+
+      setButtonText("Registering...");
+      const response = await createUserWithEmailAndPassword(auth, email, password);
+
+      if (response.user.uid) {
+        await set(ref(database, `users/${response.user.uid}`), {
+          uid: response.user.uid,
+          name: username,
+          email: email,
+          createdAt: new Date().toISOString()
+        });
+
+        alert("Registration successful!");
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        navigate("/login");
+      } else {
+        alert("Registration failed. Please try again.");
+      }
+
+      setButtonText("Register");
     } catch (err) {
-      alert(err);
+      setButtonText("Register");
+      alert(err.message || "An error occurred during registration.");
     }
   };
 
@@ -71,77 +75,67 @@ function RegisterPage() {
         <div className="RegisterPageBaseContentContainer">
           <div className="RegisterPageContentTableContainer">
             <table cellSpacing={10}>
-              <tr>
-                <td>
-                  <div className="RegisterPageInputContainer">UserName:</div>
-                </td>
-                <td>
-                  <CustomInput
-                    placeholder={"Name"}
-                    Icon={FaRegUserCircle}
-                    inputValue={username}
-                    onChangeText={(e) => setUsername(e.target.value)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div className="RegisterPageInputContainer">Email:</div>
-                </td>
-                <td>
-                  <CustomInput
-                    placeholder={"Email Address"}
-                    inputValue={email}
-                    onChangeText={(e) => setEmail(e.target.value)}
-                    Icon={MdEmail}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div className="RegisterPageInputContainer">Password:</div>
-                </td>
-                <td>
-                  <CustomInput
-                    placeholder={"Password"}
-                    inputValue={password}
-                    onChangeText={(e) => setPassword(e.target.value)}
-                    Icon={FaKey}
-                    isSecureEntry={true}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div className="RegisterPageInputContainer">
-                    Confirm Password:
-                  </div>
-                </td>
-                <td>
-                  <CustomInput
-                    placeholder={"Confirm Password"}
-                    isSecureEntry={true}
-                    inputValue={confirmPassword}
-                    onChangeText={(e) => setConfirmPassword(e.target.value)}
-                    Icon={FaKey}
-                  />
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td><div className="RegisterPageInputContainer">Username:</div></td>
+                  <td>
+                    <CustomInput
+                      placeholder="Name"
+                      Icon={FaRegUserCircle}
+                      inputValue={username}
+                      onChangeText={(e) => setUsername(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td><div className="RegisterPageInputContainer">Email:</div></td>
+                  <td>
+                    <CustomInput
+                      placeholder="Email Address"
+                      inputValue={email}
+                      onChangeText={(e) => setEmail(e.target.value)}
+                      Icon={MdEmail}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td><div className="RegisterPageInputContainer">Password:</div></td>
+                  <td>
+                    <CustomInput
+                      placeholder="Password"
+                      inputValue={password}
+                      onChangeText={(e) => setPassword(e.target.value)}
+                      Icon={FaKey}
+                      isSecureEntry={true}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td><div className="RegisterPageInputContainer">Confirm Password:</div></td>
+                  <td>
+                    <CustomInput
+                      placeholder="Confirm Password"
+                      isSecureEntry={true}
+                      inputValue={confirmPassword}
+                      onChangeText={(e) => setConfirmPassword(e.target.value)}
+                      Icon={FaKey}
+                    />
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
 
-          <div className="customButtonBaseContainer">
-            <CustomButton
-              backgroundColor={COLOR.blackColor}
-              color={COLOR.whiteColor}
-              title={"Register here"}
-              onClick={handleRegister}
-            />
-          </div>
+          <CustomButton
+            backgroundColor={COLOR.blackColor}
+            color={COLOR.whiteColor}
+            title={buttonText}
+            onClick={handleRegister}
+          />
         </div>
       </div>
-      <div></div>
     </div>
   );
 }
+
 export default RegisterPage;

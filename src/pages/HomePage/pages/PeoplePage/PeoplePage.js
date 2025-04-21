@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 import COLOR from "../../../../config/color";
 import { database } from "../../../../firebase";
-import { get, child, ref, set } from "firebase/database";
+import { get, child, ref, set, push } from "firebase/database";
 
 export default function PeoplePage() {
   const navigate = useNavigate();
@@ -31,15 +31,19 @@ export default function PeoplePage() {
     }
   };
 
-  const handleFollow = (requestUid) => {
-    alert(requestUid)
-    set(ref(database, `user/${localStorage.getItem("uid")}/request`), {
-      [requestUid]: false
+  const handleFollow = (requestUid, name, email) => {
+    alert(requestUid);
+    get(ref(database, `user/${localStorage.getItem("uid")}`)).then((userDetails) => {
+      if (userDetails.exists()) {
+        push(ref(database, `user/${requestUid}/request`), {
+          uid: localStorage.getItem("uid"),
+          name: userDetails.val().name,
+          email: userDetails.val().email,
+          request_action: "Non Responsive"
+        });
+      }
     })
-    set(ref(database, `user/${requestUid}/request`), {
-      [localStorage.getItem("uid")]: false
-    })
-  }
+  };
 
   return (
     <div className="peoplePageBaseContainer">
@@ -64,11 +68,16 @@ export default function PeoplePage() {
                       <div className="peoplePageItemBaseContainer">
                         <h1>{item.name}</h1>
                         <h3>{item.email}</h3>
-                        <h3>{item.uid}</h3>
                         <div className="PeoplePageFollowButton">
-                        <CustomButton  title={"Follow"}  color={"#000"} backgroundColor={"#00FF00"} onClick={() => handleFollow(item.uid)}/>
+                          <CustomButton
+                            title={"Follow"}
+                            color={"#000"}
+                            backgroundColor={"#00FF00"}
+                            onClick={() =>
+                              handleFollow(item.uid, item.name, item.email)
+                            }
+                          />
                         </div>
-      
                       </div>
                     )}
                   </>
@@ -78,14 +87,14 @@ export default function PeoplePage() {
           </div>
         )}
       </div>
-      <div className="peoplePageAddButtonContainer">
+      {/* <div className="peoplePageAddButtonContainer">
         <CustomButton
           backgroundColor={COLORS.baseColorDark}
           title={"Add People"}
           color={COLORS.whiteColor}
           onClick={() => navigate("/new-people")}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

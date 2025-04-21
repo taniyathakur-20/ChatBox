@@ -11,13 +11,14 @@ import { getDatabase } from "firebase/database";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyA6L_ATii1wLAWeMLT4LiXjbD7wQoy9hDk",
-  authDomain: "chatvibe-b7e07.firebaseapp.com",
-  projectId: "chatvibe-b7e07",
-  storageBucket: "chatvibe-b7e07.firebasestorage.app",
-  messagingSenderId: "643801106725",
-  appId: "1:643801106725:web:0d25db648303cc08a132cc",
-  measurementId: "G-0Q4JZF74LR"
+  apiKey: "AIzaSyBsOpdMZrohGh18aDx2Ihfk4mTiqGpaW60",
+  authDomain: "chatvibe-3db02.firebaseapp.com",
+  databaseURL: "https://chatvibe-3db02-default-rtdb.firebaseio.com",
+  projectId: "chatvibe-3db02",
+  storageBucket: "chatvibe-3db02.firebasestorage.app",
+  messagingSenderId: "807754136281",
+  appId: "1:807754136281:web:f36c5c52100f872b045cc8",
+  measurementId: "G-ZFPWWVK3P6"
 };
 
 // Initialize Firebase

@@ -38,6 +38,7 @@
   justify-content:space-between;
 }
 .chatPageInputContainer{
+  flex: 1;
   height: 50px;
   width: 40px;
 }

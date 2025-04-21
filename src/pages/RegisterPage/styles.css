@@ -49,3 +49,14 @@
     font-size: large;
     gap:10px;
   }
+  .customButtonBaseContainer:hover{
+    background-color:aqua!important;
+    color: var(--whiteColor) !important;
+    border:1px solid var(--whiteColor);
+    cursor:pointer;
+
+  }
+   .buttonrg:hover{
+    background-color: aqua;
+
+   }
