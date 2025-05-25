@@ -17,7 +17,7 @@ export default function RequestPage() {
   const getDataOfrequest = async () => {
     setIsLoading(true);
     await onValue(
-      ref(database, `user/${localStorage.getItem("uid")}/request`),
+      ref(database, `users/${localStorage.getItem("uid")}/request`),
       (snapshot) => {
         if (snapshot.exists()) {
           const requestData = [];
@@ -37,14 +37,16 @@ export default function RequestPage() {
   };
 
   const handleAcceptRequest = (key, uid) => {
-    remove(ref(database, `user/${localStorage.getItem("uid")}/request/${key}`));
-    push(ref(database, `user/${localStorage.getItem("uid")}/chat/${uid}`), {
-      message: "Hello"
-    })
-    push(ref(database, `user/${uid}/chat/${localStorage.getItem("uid")}`), {
-      message: "Hello"
+    remove(
+      ref(database, `users/${localStorage.getItem("uid")}/request/${key}`)
+    );
+    push(ref(database, `users/${localStorage.getItem("uid")}/chat/${uid}`), {
+      message: "Hello",
     });
-  }
+    push(ref(database, `users/${uid}/chat/${localStorage.getItem("uid")}`), {
+      message: "Hello",
+    });
+  };
 
   return (
     <div className="requestPageBaseContainer">
@@ -63,7 +65,13 @@ export default function RequestPage() {
                   <p>{JSON.stringify(item)}</p>
                 </div>
                 <div className="requestTileAcceptBaseContainer">
-                  <CustomButton title={"Accept"} backgroundColor={"#00FF00"} onClick={() => handleAcceptRequest(item.unique_key, item.data.uid)}/>
+                  <CustomButton
+                    title={"Accept"}
+                    backgroundColor={"#00FF00"}
+                    onClick={() =>
+                      handleAcceptRequest(item.unique_key, item.data.uid)
+                    }
+                  />
                   <CustomButton title={"Reject"} backgroundColor={"#FF0000"} />
                 </div>
               </div>

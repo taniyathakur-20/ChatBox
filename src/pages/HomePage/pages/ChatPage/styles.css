@@ -1,47 +1,73 @@
-.chatPageBaseContainer{
-  width:100%;
-  height:100vh;
+.chatPageBaseContainer {
+  width: 100%;
+  height: 100vh;
   /* background-color: blueviolet; */
-  display:flex;
+  display: flex;
   flex-direction: row;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-.chatPageChatContainer{
-  flex:1;
-  background-color: aqua;
+.chatPageChatContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
-.chatPageMessageContainer{
-  flex:2.5;
-  /* background-color: blue; */
-  align-items: center;
-  justify-content: space-between;
-  padding:10px;
-
-
+.chatPageChatItemBaseContainer {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #00000044;
+  font-size: 30px;
 }
-.chatPageUserContainer{
-  flex:1;
-  background-color: azure;
-  padding:20px 20px;
+.chatPageMessageContainer {
+  flex: 2.5;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
-.chatPageBoxContainer{
-  flex:1;
-  background-color: brown;
-  height:70%;
+.chatPageUserContainer {
+  padding: 10px;
 }
-.chatPageCustomBaseContainer{
-  /* background-color: pink; */
-  flex:1;
+.chatPageBoxContainer {
+  height: 80vh;
+}
+.chatPageCustomBaseContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:space-between;
+  gap: 10px;
 }
-.chatPageInputContainer{
+.chatPageInputContainer {
   flex: 1;
-  height: 50px;
-  width: 40px;
 }
-.chatPageButtonContainer{
-  
+.chatPageInputContainer input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #00000044;
+}
+.chatPageButtonContainer {
+}
+
+.message {
+  padding: 8px 12px;
+  margin: 6px;
+  border-radius: 10px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+.sent {
+  background-color: #daf8cb;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.received {
+  background-color: #e5e5ea;
+  align-self: flex-start;
+  margin-right: auto;
 }

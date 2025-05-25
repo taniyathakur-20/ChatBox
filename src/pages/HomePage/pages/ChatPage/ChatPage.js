@@ -7,46 +7,54 @@ import { database } from "../../../../firebase";
 import { onValue, push, ref, get } from "firebase/database";
 
 function ChatPage() {
-
   const [message, setMessage] = useState("");
-  const [chatData, setChatData] = useState([]); 
+  const [chatData, setChatData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [chatVisibleData, setChatVisibleData] = useState([]);
   const [chatVisibleUid, setChatVisibleUid] = useState("");
+  const [chatMessages, setChatMessages] = useState([]);
 
   useEffect(() => {
     getChatData();
   }, []);
 
-  // Function to fetch chat data
+  useEffect(() => {
+    const uid = localStorage.getItem("uid");
+    if (!uid || !chatVisibleUid) return;
+
+    const chatRef = ref(database, `users/${uid}/chat/${chatVisibleUid}/`);
+    onValue(chatRef, (snapshot) => {
+      const messages = snapshot.exists() ? Object.values(snapshot.val()) : [];
+      setChatMessages(messages);
+    });
+  }, [chatVisibleUid]);
+
   const getChatData = async () => {
-    const uid = localStorage.getItem("uid"); // Get uid from local storage
+    const uid = localStorage.getItem("uid");
     if (!uid) {
       alert("User ID not found in localStorage!");
       return;
     }
-    const dbRef = ref(database, `user/${uid}/chat/`);
+    const dbRef = ref(database, `users/${uid}/chat/`);
     onValue(dbRef, (snapShotChat) => {
       if (snapShotChat.exists()) {
-        setIsLoading(true);
         const chatKeys = Object.keys(snapShotChat.val());
-        get(ref(database, "user")).then((snapShotUser) => {
+        get(ref(database, "users")).then((snapShotUser) => {
           const demoChatData = [];
           chatKeys.map((item) => {
-            demoChatData.push(snapShotUser.val()[item]);
+            const user = snapShotUser.val()[item];
+            if (user) demoChatData.push(user);
           });
           setChatData(demoChatData);
           setIsLoading(false);
-          console.log(demoChatData);
         });
       } else {
-        setChatData([]); // Set empty if no chats exist
+        setChatData([]);
         setIsLoading(false);
       }
     });
   };
 
-  // Function to handle message sending
   const handleMessageSend = () => {
     const uid = localStorage.getItem("uid");
     if (!uid) {
@@ -62,38 +70,22 @@ function ChatPage() {
       return;
     }
 
-    // Push message to Firebase
-    const userChatRef = ref(
-      database,
-      `user/${uid}/chat/${chatVisibleUid}/`
-    );
+    const userChatRef = ref(database, `users/${uid}/chat/${chatVisibleUid}/`);
     const recipientChatRef = ref(
       database,
-      `user/${chatVisibleUid}/chat/${uid}/`
+      `users/${chatVisibleUid}/chat/${uid}/`
     );
 
     const messageData = {
       message: message,
-      timestamp: Date.now(), // Optional: Add timestamp for sorting or display
+      timestamp: Date.now(),
+      senderUid: uid,
     };
 
-    push(userChatRef, messageData)
-      .then(() => {
-        console.log("Message saved to user chat branch.");
-      })
-      .catch((error) => {
-        console.error("Error saving message:", error);
-      });
+    push(userChatRef, messageData);
+    push(recipientChatRef, messageData);
 
-    push(recipientChatRef, messageData)
-      .then(() => {
-        console.log("Message saved to recipient chat branch.");
-      })
-      .catch((error) => {
-        console.error("Error saving message:", error);
-      });
-
-    setMessage(""); // Reset message input field
+    setMessage("");
   };
 
   return (
@@ -112,11 +104,11 @@ function ChatPage() {
                 <p
                   key={index}
                   onClick={() => {
-                    setChatVisibleData(Object.values(item.chat));
                     setChatVisibleUid(item.uid);
                   }}
+                  className="chatPageChatItemBaseContainer"
                 >
-                  {item.name || "Unknown User"} {/* Handle undefined 'name' */}
+                  {item.name || "Unknown User"}
                 </p>
               ))}
             </>
@@ -125,17 +117,26 @@ function ChatPage() {
       )}
       <div className="chatPageMessageContainer">
         <div className="chatPageUserContainer">
-          <p>{JSON.stringify(Object.values(chatVisibleData))}</p>
+          <p>
+            {chatVisibleUid
+              ? `Chatting with ${chatVisibleUid}`
+              : "Select a user"}
+          </p>
         </div>
-        {chatVisibleData.length > 0 && (
-          <div className="chatPageBoxContainer">
-            {Object.values(chatVisibleData[0]).map((item, index) => (
-              <div key={index}>
-                <p>{Object.values(item)[0]}</p>
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="chatPageBoxContainer">
+          {chatMessages.map((item, index) => (
+            <div
+              key={index}
+              className={`message ${
+                item.senderUid === localStorage.getItem("uid")
+                  ? "sent"
+                  : "received"
+              }`}
+            >
+              {item.message}
+            </div>
+          ))}
+        </div>
 
         <div className="chatPageCustomBaseContainer">
           <div className="chatPageInputContainer">
@@ -143,12 +144,6 @@ function ChatPage() {
               placeholder="Enter message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-            />
-            <CustomInput
-              placeholder={"Enter Message"}
-              backgroundColor={"#00ff00"}
-              inputValue={message}
-              onChangeText={(e) => setMessage(e.target.value)}
             />
           </div>
           <div className="chatPageButtonContainer">

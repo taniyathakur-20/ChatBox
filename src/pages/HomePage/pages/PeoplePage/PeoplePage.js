@@ -19,7 +19,7 @@ export default function PeoplePage() {
 
   const getDataOfPeople = async () => {
     setIsLoading(true);
-    const dbRef = ref(database, "user");
+    const dbRef = ref(database, "users");
     const snapshot = await get(dbRef);
     if (snapshot.exists()) {
       setPeopleData(Object.values(snapshot.val()));
@@ -33,16 +33,18 @@ export default function PeoplePage() {
 
   const handleFollow = (requestUid, name, email) => {
     alert(requestUid);
-    get(ref(database, `user/${localStorage.getItem("uid")}`)).then((userDetails) => {
-      if (userDetails.exists()) {
-        push(ref(database, `user/${requestUid}/request`), {
-          uid: localStorage.getItem("uid"),
-          name: userDetails.val().name,
-          email: userDetails.val().email,
-          request_action: "Non Responsive"
-        });
+    get(ref(database, `users/${localStorage.getItem("uid")}`)).then(
+      (userDetails) => {
+        if (userDetails.exists()) {
+          push(ref(database, `users/${requestUid}/request`), {
+            uid: localStorage.getItem("uid"),
+            name: userDetails.val().name,
+            email: userDetails.val().email,
+            request_action: "Non Responsive",
+          });
+        }
       }
-    })
+    );
   };
 
   return (
