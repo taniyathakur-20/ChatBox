@@ -8,6 +8,7 @@ import ChatPage from "./pages/HomePage/pages/ChatPage/ChatPage";
 import PeoplePage from "./pages/HomePage/pages/PeoplePage/PeoplePage";
 import AboutUsPage from "./pages/HomePage/pages/AboutUsPage/AboutUsPage";
 import RequestPage from "./pages/HomePage/pages/RequestPage/RequestPage";
+import ProfilePage from "./pages/HomePage/pages/ProfilePage/ProfilePage";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/people" element={<PeoplePage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/request" element={<RequestPage />}/>
+          <Route path="/profile" element={<ProfilePage />}/>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

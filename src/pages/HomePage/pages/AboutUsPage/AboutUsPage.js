@@ -7,7 +7,7 @@ function AboutPage(){
   return(
   <div className="BaseContainer">
 <div className="SecondContainerrrr">
-  <IoIosPhonePortrait size={45} color={ColorRing.white}/>
+  <IoIosPhonePortrait  size={45} color={ColorRing.white}/>
   <h1>ABOUT REALTIME CHATAPP</h1>
   <IoIosPhonePortrait size={45} color={ColorRing.white}/>
 </div>
@@ -20,8 +20,23 @@ function AboutPage(){
   </div>
   <div className="Secondgrid">
     <h1>Encryputed & Secure</h1>
+    <img src={require("../../../../assets/images/secure.jpg")}/>
+    <p>Security is a fundamental requirement for any digital platform, especially in chatting apps where personal information and conversations are exchanged. A secure chatting app protects user data through encryption so that unauthorized parties cannot read the messages. End-to-end encryption ensures that the message is only readable by the sender and the receiver. </p>
   </div>
+  <div className="thirdgrid">
+    <h1>Media Sharing</h1>
+    <img src={require("../../../../assets/images/media sharing.jpg")}/>
+    <p>Media sharing is one of the most useful features in modern chatting apps, allowing users to exchange more than just text. With this feature, people can easily share photos, videos, voice notes, documents, and even location in real time. It adds depth and clarity to conversations, making communication more expressive and engaging. </p>
+  </div>
+
+  <div className="contact">
+  <h2>Contact Us</h2>
+  <p>Email:contact@chat.com</p>
+  <p>Phone:9855588771</p>
+  <p>Address:Green Park,City Gurdaspur</p>
 </div>
+  </div>
+ 
   </div>
 
   )

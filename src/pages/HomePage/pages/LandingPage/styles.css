@@ -6,7 +6,7 @@
 }
 
 .landingBaseHeroSectionContainer {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background-position: center;
     background-size: cover;
@@ -29,6 +29,29 @@
     gap: 10px
 }
 
+.imaggeContainer{
+
+    height: 80%;
+    width: 100% ;
+  display: flex;
+}
+
+@keyframes animate{
+  from{
+    opacity: 0;
+    transform: translate(0, 50px);
+    filter: blur(33px);
+  }
+
+}
+
+.contentContainer{
+
+    text-align: center;
+    animation: animate 2.5s ease-in-out;
+
+}
+
 .landingPageHeroContentContainer h1 {
     text-align: left;
     font-size: 80px;
@@ -42,4 +65,10 @@
 
 .landingPageHeroInfoContainer {
     flex: 1;
+}
+.landingBaseHeroTitleContainer{
+    font-size:30px;
+    align-items: center ;
+    padding: 20px;
+
 }

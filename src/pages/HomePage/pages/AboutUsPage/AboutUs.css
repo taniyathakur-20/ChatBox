@@ -1,6 +1,7 @@
 .BaseContainer{
   height:100vh;
   width:100%;
+  gap: 30px;
   background-color:grey;
 }
 .SecondContainerrrr{
@@ -8,29 +9,36 @@
   width:100%;
   display: flex;
   align-items: center;
+  gap: 30px;
+  padding: 20px;
   justify-content: center;
+  gap:50px;
 }
 .SecondContainerrrr h1{
   text-decoration:underline;
 }
 .thirdpagecontainer{
+  display: flex;
+  flex-direction: column;
   height:100vh;
   width:100%;
+  gap: 50px;
+  padding: 20px;
  background-color:whitesmoke;
 padding-left: 170px;
 }
 .firstgrid{
-  height:70vh;
-  width:85%;
+  height:100vh;
+  width:80%;
   border:2px solid black;
   border-radius: 8px;
-  padding-left: 0px;
-  padding-right: 0px;
   background-color:beige;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
 }
 .firstgrid h1{
   font-size: 50px;
-  padding-left: 170px;
   text-decoration: underline;
   display: flex;
   align-items: center;
@@ -40,22 +48,101 @@ padding-left: 170px;
   height:40vh;
   width:80%;
   padding-left: 170px;
+  animation: animate 2.5s ease-in-out; 
+
+}
+
+
+
+@keyframes animate{
+  from{
+    opacity: 0;
+    transform: translate(0, 50px);
+    filter: blur(33px);
+  }
+
 }
 .Secondgrid{
-    height:70vh;
+    height:100vh;
     width:85%;
     border:2px solid black;
     border-radius: 8px;
-    padding-left: 0px;
-    padding-right: 0px;
     background-color:beige;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
   }
 
 .Secondgrid h1{
+  font-size: 50px;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Secondgrid img{
+  height:40vh;
+  width:80%;
+  padding-left: 170px;
+  transition: transform 0.3 ease;
+  object-fit: cover;
+  animation: animate 2.5s ease-in-out; 
+} 
+@keyframes animate{
+  from{
+    opacity: 0;
+    transform: translate(0, 50px);
+    filter: blur(33px);
+  }
+
+}
+
+.thirdgrid{
+  height:70vh;
+  width:85%;
+  border:2px solid black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  
+  background-color:beige;
+}
+.thirdgrid h1{
+  font-size: 50px;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thirdgrid img{
+  height:40vh;
+  width:80%;
+  padding-left: 170px;
+  transition: transform 0.3 ease;
+  object-fit: cover;
+  animation: animate 2.5s ease-in-out; 
+
+}
+.contact {
+  text-align:center;
+  font-size: 1.1rem;
+  color:#555;
+  align-items: center;
+  justify-content: center;
+}
+.feature-item{
+  width:100px;
+};
+.SecondContainerrrr :hover {
+  transition:5s ease-in-out;
+  transform: rotate(360deg);
+
+
   
 }
   
-
     
     
 

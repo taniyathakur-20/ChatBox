@@ -14,6 +14,8 @@ function CustomNavbar() {
     { title: "People", path: "/people" },
     { title: "About us", path: "/about" },
     { title: "Request", path: "/request" },
+
+
   ];
   return (
     <div className="customNavbarBaseContainer">

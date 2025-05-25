@@ -48,8 +48,14 @@ function LandingPage() {
         </div>
       </section>
       <section className="landingBaseHeroSectionContainer">
-        <div>
+        <div className="imaggeContainer">
           <img src={require("../../../../assets/images/imagecom.png")} alt="Hero" />
+        </div>
+        
+      </section>
+      <section className="landingBaseHeroTitleContainer">
+        <div className="contentContainer">
+        <p>A chatting app offers numerous benefits that make communication easier, faster, and more convenient. It allows users to connect in real time, no matter where they are in the world. These apps support not just text messaging, but also voice notes, video calls, file sharing, and multimedia messages. For businesses, chatting apps provide an efficient way to handle customer service and team collaboration. With features like end-to-end encryption and message history, users can enjoy both security and easy access to past conversations. Additionally, since most chatting apps are available on smartphones, tablets, and computers, staying connected on the go has never been simpler.</p>
         </div>
       </section>
     </div>
